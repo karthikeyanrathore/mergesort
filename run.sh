@@ -28,5 +28,5 @@ done 4<docs/out1 5<docs/out2
 
 if [[ $ok == 0 ]]
 then
-  echo "All test cases working"
+  echo "All test cases passed"
 fi

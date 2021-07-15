@@ -41,3 +41,9 @@ vector<int> fun(vector<int>& a){
   mergesort(a ,0 , a.size() - 1);
   return a;
 }
+int main(){
+  int n; scanf("%d",&n);
+  int a[n];
+  for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
+  fun(a , 0 , n - 1);
+}
