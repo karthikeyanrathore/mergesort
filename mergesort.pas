@@ -1,17 +1,13 @@
 program mergesort;
 const
-  size = 1001;
+  size = 10001;
 
 type
   arr = array[1..size] of integer;
 
-var
-  i , n , mid: integer; a: arr;
-
-
 procedure merge(var a:arr; L , mid , R: integer);
  var
-    p  , q , k ,  n1: integer; 
+    i ,  p  , q , k ,  n1: integer; 
     n2: integer;
     left: arr;
     right: arr;
@@ -63,6 +59,8 @@ end;
 
 
 procedure mergesort(var a:arr; L , R: integer);
+var
+  mid: integer;
 begin
   if( L < R ) then
     begin
@@ -74,17 +72,23 @@ begin
 end;
 
 
-begin
-  writeln('merge sort');
-  read(n);
-
-  for i:= 1 to n do
-    read(a[i]);
-
-  mergesort(a , 1 , n);
-
-  for i:= 1 to n do
-    write(a[i]);
-
-
-end.
+var
+  i , test , n ,   x: integer; a: arr;
+  begin
+  read(test);
+  while(test > 0) do
+    begin
+      read(n);
+      for i:= 1 to n do
+        begin
+          read(x);
+          a[i] := x;
+        end;
+      mergesort(a , 1 , n);
+      writeln('merge sort');
+      for i:= 1 to n do
+        write(a[i] , ' ');
+      writeln();
+      test -= 1;
+    end; 
+  end.
