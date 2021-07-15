@@ -48,7 +48,7 @@ if __name__ == "__main__":
     a = (list(map(int,input().split())))
     mergesort(a , 0 , n - 1)
     for i in a:
-      print(i , end = " ")
+      print(i  , end = " ")
     print()
     tc -= 1
 

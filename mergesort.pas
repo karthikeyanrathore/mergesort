@@ -85,7 +85,6 @@ var
           a[i] := x;
         end;
       mergesort(a , 1 , n);
-      writeln('merge sort');
       for i:= 1 to n do
         write(a[i] , ' ');
       writeln();
