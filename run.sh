@@ -1,20 +1,23 @@
 #!/bin/bash
-printf "  gen-rating test cases  "
+printf "  generating test cases \n  "
 g++ stresstest.cc && ./a.out  > docs/in
 
-printf  "\n"
-printf "  running mergesort.py   "
+printf "  running brute.cc \n "
+g++ brute.cc && ./a.out  < docs/in > docs/brute
+
+printf "  running mergesort.cc \n "
+g++ mergesort.cc && ./a.out  < docs/in > docs/cpp
+
+
+printf "  running mergesort.py \n "
 chmod +x mergesort.py
 ./mergesort.py < docs/in > docs/py
 
+printf "  running mergesort.go \n "
+go run  mergesort.go  < docs/in > docs/go
 
-printf  "\n"
 printf "  running mergesort.pas \n  "
 fpc mergesort.pas && ./mergesort < docs/in > docs/pas
-
-printf  "\n"
-printf "  running mergesort.go \n  "
-go run  mergesort.go  < docs/in > docs/go
 
 
 

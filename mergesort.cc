@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 void merge(std :: vector<int>& a , int L , int mid , int R){
   int n1 = mid - L + 1;
   int n2 = R - mid;
@@ -39,3 +40,16 @@ std:: vector<int> fun(std:: vector<int>& a){
   mergesort(a ,0 , a.size() - 1);
   return a;
 }
+int main(){
+  int tc; scanf("%d"  , &tc);
+  while(tc --){
+    int n;scanf("%d",&n);
+    std:: vector<int>a(n);
+    for(int i = 0; i < n; ++i) scanf("%d" ,&a[i]);
+    a = fun(a);
+    for(int i = 0; i < n; ++i) printf("%d " ,a[i]);
+    printf("\n");
+  }
+}
+
+

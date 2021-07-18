@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-#include "mergesort.h"
-#include "brute.h"
 using namespace std;
 int main(){
   srand(time(NULL));
