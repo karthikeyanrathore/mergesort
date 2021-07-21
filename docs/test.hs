@@ -27,9 +27,10 @@ add (x,y) = x + y
 zeroto :: Int -> [Int]
 zeroto n = [0..n]
 
+{--
 mult :: Int -> (Int -> (Int -> Int))
 mult x y z = x*y*z
-
+--}
 
 -- add
 -- 'add 1 2
@@ -49,7 +50,62 @@ _splitAt n xs = (take n xs, drop n xs)
 
 -- signum sign of num
 _signum :: Int ->  Int
-_signum x = if x < 0 then -1 else if x == 0 then 0 else 1
+--_signum x = if x < 0 then -1 else if x == 0 then 0 else 1
+_signum x | x < 0 = -1
+          | x == 0 = 0
+          | otherwise = 1
+
+
+{--
+first :: (a , b) -> a 
+first (x,_) = x
+
+first :: (Int , Int) -> Int 
+first (x,_) = x
+
+second :: (a , b) -> b
+second (_,x) = x
+--}
+
+--map iterate over list map (+x)[a] a[i] += x  or below case ...  a[i] = a[i]*2 + 1
+odds :: Int -> [Int]
+odds n = map (\x -> x*2  + 1) [0..n-1]
+
+
+halve :: [a] -> ([a] ,[a])
+halve xs = (take n xs , drop n xs) where
+  n = length xs `div` 2
+
+{--
+third :: [a] -> a
+third xs = xs !! 2
+
+third :: [a] -> a
+third xs = head(tail(tail xs))
+--}
+
+-- patten matching
+third :: [a] -> a
+third (_:_:x:_) = x 
+
+{--
+safetail :: [a] -> [a]
+safetail xs = if null xs then xs else tail xs
+
+safetail :: [a] -> [a]
+safetail xs | null xs = xs
+            | otherwise = tail xs
+
+
+--}
+
+-- pattern match
+safetail [] = []
+safetail (_:xs) = xs
+
+mult :: Int -> Int -> Int -> Int
+mult x y z =  (\x y z -> x * y * z) x y z 
+
 
 
 
