@@ -31,12 +31,12 @@ zeroto n = [0..n]
 mult :: Int -> (Int -> (Int -> Int))
 mult x y z = x*y*z
 --}
-
+{--
 -- add
 -- 'add 1 2
 add' :: Int  ->( Int -> Int)
 add' x y = x + y
-
+--}
 -- even
 _even :: Integral a => a -> Bool
 _even n = n `mod` 2 == 0
@@ -105,6 +105,28 @@ safetail (_:xs) = xs
 
 mult :: Int -> Int -> Int -> Int
 mult x y z =  (\x y z -> x * y * z) x y z 
+
+-- bank card number luhn algo
+fun :: Int -> Int
+fun x = if 2*x  > 9 then  2*x - 9 else 2*x
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d = (fun a + b + fun c + d) `mod` 10 == 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
