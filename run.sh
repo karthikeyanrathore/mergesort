@@ -20,12 +20,16 @@ printf "  running mergesort.pas \n  "
 fpc mergesort.pas && ./mergesort < test/in > test/pas
 
 
+red=`tput setaf 1`
+green=`tput setaf 2`
+cyan=`tput setaf 6`
+
 test_case(){
   if ! diff -q "test/brute" "test/$1" &>/dev/null;
   then
-    >&2 echo "Test failed"
+    >&2 echo "${red} Test failed"
   else
-    echo "Test passed for $1"
+    echo "${green} Test passed for ${cyan} [+ $1]"
   fi
 }
 test_case cpp
