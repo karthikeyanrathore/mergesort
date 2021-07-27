@@ -1,3 +1,6 @@
+-- Programming in Haskell  
+-- GRAHAM HUTTON
+
 double x = x + x
 quadruple x = double (double x)
 
