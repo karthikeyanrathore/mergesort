@@ -114,20 +114,56 @@ luhn :: Int -> Int -> Int -> Int -> Bool
 luhn a b c d = (fun a + b + fun c + d) `mod` 10 == 0
 
 
+_concat :: [[a]] -> [a]
+_concat xss = [x | xs <- xss , x <- xs]
 
 
+firsts :: [( a, b)] -> [a]
+firsts xs = [x |  (x ,_) <- xs]
 
 
+seconds :: [( a, b)] -> [b]
+seconds xs = [x |  (_ , x) <- xs]
+
+_length :: [a] -> Int
+_length xs = sum [ 1 | _ <- xs]
+
+_evenarray :: Int -> [Int]
+_evenarray n = [x | x <- [1..n] , even x]
+
+factors :: Int -> [Int]
+factors n = [x | x <- [1..n] , n `mod` x == 0] 
+
+prime :: Int -> Bool
+prime n = factors n == [1 , n]
+
+primes :: Int -> [Int]
+primes n = [x | x  <- [1..n] , prime x]
 
 
+find :: Eq a => a -> [(a ,b)] -> [b]
+find k t = [x  | (k' , x) <- t  , k == k']
 
 
+pairs :: [a] -> [(a,a)]
+pairs xs =  zip xs (tail xs)
+
+{-
+sorted :: [Int] -> Bool
+sorted xs = and [ x <= y | (x ,y) <- pairs xs]
+-}
+
+{- Ord ... of any ordered type int, char-}
+
+sorted :: Ord a => [a] -> Bool
+sorted xs = and [ x <= y | (x ,y) <- pairs xs]
 
 
+lowers :: String -> Int
+lowers xs = length [ x | x <- xs , x >= 'a' && x <= 'z']
 
-
-
-
+count :: Char -> String -> Int
+count x xs = length [ y | y <- xs , y == x]
 
 
 
