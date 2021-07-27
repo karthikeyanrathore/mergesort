@@ -20,4 +20,17 @@ printf "  running mergesort.pas \n  "
 fpc mergesort.pas && ./mergesort < test/in > test/pas
 
 
+test_case(){
+  if ! diff -q "test/brute" "test/$1" &>/dev/null;
+  then
+    >&2 echo "Test failed"
+  else
+    echo "Test passed for $1"
+  fi
+}
+test_case cpp
+test_case go
+test_case py
+test_case pas
+
 
