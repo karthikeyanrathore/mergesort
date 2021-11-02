@@ -161,12 +161,12 @@ sorted xs = and [ x <= y | (x ,y) <- pairs xs]
 sorted :: Ord a => [a] -> Bool
 sorted xs = and [ x <= y | (x ,y) <- pairs xs]
 
-
 lowers :: String -> Int
 lowers xs = length [ x | x <- xs , x >= 'a' && x <= 'z']
 
 count :: Char -> String -> Int
 count x xs = length [ y | y <- xs , y == x]
+
 
 
 
