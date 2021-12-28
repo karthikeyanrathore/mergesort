@@ -168,6 +168,32 @@ count :: Char -> String -> Int
 count x xs = length [ y | y <- xs , y == x]
 
 
+-- Recursion
+fact :: Int -> Int
+fact 0 = 1
+fact n = n * fact(n - 1)
+
+lenlist :: [a] -> Int
+lenlist [] = 0
+lenlist (x:xs) = 1 + lenlist xs
+
+insert :: Ord a =>  a -> [a] -> [a]
+insert x [] = [x]
+insert x (i:is) | x > i = i : insert x is
+                | otherwise = x : i : is
+
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib n = fib(n - 1) + fib(n - 2)
+
+
+
+
+
+
+
+
 
 
 
