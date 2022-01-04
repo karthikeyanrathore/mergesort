@@ -42,8 +42,14 @@ vector<int> fun(vector<int>& a){
   return a;
 }
 int main(){
-  int n; scanf("%d",&n);
-  int a[n];
-  for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
-  fun(a , 0 , n - 1);
-}
+  int tc; scanf("%d", &tc);
+  int ans = 0;
+  while(tc --){
+    int n; scanf("%d",&n);
+    int a[n];
+    for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
+    fun(a , 0 , n - 1);
+    ans += a[0];
+  }
+  printf("%d", ans);
+

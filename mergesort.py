@@ -43,14 +43,14 @@ def mergesort(a , L , R):
      
 if __name__ == "__main__":
   tc = int(input())
+  ans = 0
   while(tc):
     n =  int(input())
     a = (list(map(int,input().split())))
     mergesort(a , 0 , n - 1)
-    for i in a:
-      print(i  , end = " ")
-    print()
+    ans += a[0]
     tc -= 1
+  print(ans)
 
 
 

@@ -42,14 +42,15 @@ std:: vector<int> fun(std:: vector<int>& a){
 }
 int main(){
   int tc; scanf("%d"  , &tc);
+  int ans = 0;
   while(tc --){
     int n;scanf("%d",&n);
     std:: vector<int>a(n);
     for(int i = 0; i < n; ++i) scanf("%d" ,&a[i]);
     a = fun(a);
-    for(int i = 0; i < n; ++i) printf("%d " ,a[i]);
-    printf("\n");
+    ans += a[0];
   }
+  printf("%d \n", ans);
 }
 
 

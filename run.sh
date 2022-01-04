@@ -1,6 +1,4 @@
 #!/bin/bash
-printf "  generating test cases \n  "
-g++ stresstest.cc && ./a.out  > test/in
 
 printf "  running brute.cc \n "
 g++ brute.cc && ./a.out  < test/in > test/brute
