@@ -1,8 +1,2 @@
-# MergeSort
+# MergeSort [![.github/workflows/builder.yml](https://github.com/karthikeyanrathore/mergesort/actions/workflows/builder.yml/badge.svg)](https://github.com/karthikeyanrathore/mergesort/actions/workflows/builder.yml)
 
-Sorting Algorithm. [wiki](https://en.wikipedia.org/wiki/Merge_sort) <br>
-Write you own merge sort in these [languages](https://en.wikipedia.org/wiki/List_of_programming_languages).
-
-# Supported Languages
-- python3
-- 
