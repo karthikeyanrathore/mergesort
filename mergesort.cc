@@ -41,16 +41,12 @@ std:: vector<int> fun(std:: vector<int>& a){
   return a;
 }
 int main(){
-  int tc; scanf("%d"  , &tc);
-  int ans = 0;
-  while(tc --){
-    int n;scanf("%d",&n);
-    std:: vector<int>a(n);
-    for(int i = 0; i < n; ++i) scanf("%d" ,&a[i]);
-    a = fun(a);
-    ans += a[0];
-  }
-  printf("%d \n", ans);
+  std:: vector<int>a = {9, 1, 7, 4, 6, 2, 8, 3};
+  a = fun(a);
+
+  std:: vector<int>expected_result = {1, 2, 3, 4, 6, 7, 8, 9};
+  assert (a == expected_result && "Mergesort failed");
+
 }
 
 

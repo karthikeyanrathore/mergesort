@@ -1,5 +1,3 @@
-#include <iostream>
-
 void merge(int *a , int L , int mid , int R){
   int n1 = mid - L + 1;
   int n2 = R - mid;
@@ -42,15 +40,20 @@ vector<int> fun(vector<int>& a){
   return a;
 }
 int main(){
-  int tc; scanf("%d", &tc);
-  int ans = 0;
-  while(tc --){
-    int n; scanf("%d",&n);
-    int a[n];
-    for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
-    fun(a , 0 , n - 1);
-    ans += a[0];
-  }
-  printf("%d", ans);
+  // int tc; scanf("%d", &tc);
+  // int ans = 0;
+  // while(tc --){
+  //   int n; scanf("%d",&n);
+  //   int a[n];
+  //   for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
+  //   fun(a , 0 , n - 1);
+  //   ans += a[0];
+  // }
+  // printf("%d", ans);
+  vector<int> a = {9, 1, 7, 4, 6, 2, 8, 3}
+  fun(a , 0 , n - 1);
+  printf("%d", a)
+  
 }
 
+// todo: Need rework, compiler gcc

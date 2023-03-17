@@ -1,5 +1,4 @@
 func merge(left: [Int],right: [Int],  _ low: Int, _ mid: Int,_  high: Int) -> [Int]{
-  
   for i in 0...(n1 - 1){
     left.append(array[i + low])
   }
