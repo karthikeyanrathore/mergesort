@@ -52,4 +52,5 @@ int main(){
     ans += a[0];
   }
   printf("%d", ans);
+}
 

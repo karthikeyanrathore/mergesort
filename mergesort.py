@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 def merge(a , L , mid , R):
   n1 = mid - L + 1
   n2 = R - mid
@@ -9,10 +7,7 @@ def merge(a , L , mid , R):
     left[i] = a[i + L]
   for i in range(0 , n2):
     right[i] = a[i + mid + 1]
-
-  i =  0 
-  j = 0 
-  k = L
+  i =  0; j = 0; k = L
   while(i < n1 and j < n2):
     if(left[i] <= right[j]):
       a[k] = left[i]
@@ -22,17 +17,14 @@ def merge(a , L , mid , R):
       a[k] = right[j]
       k += 1
       j += 1
-
   while(i < n1):
     a[k] = left[i]
     k += 1
     i += 1
-
   while(j < n2):
     a[k] = right[j]
     k += 1
     j += 1
-
 
 def mergesort(a , L , R):
   if(L < R):
@@ -42,18 +34,6 @@ def mergesort(a , L , R):
     merge(a , L , mid , R)
      
 if __name__ == "__main__":
-  tc = int(input())
-  ans = 0
-  while(tc):
-    n =  int(input())
-    a = (list(map(int,input().split())))
-    mergesort(a , 0 , n - 1)
-    ans += a[0]
-    tc -= 1
-  print(ans)
-
-
-
-
-
-
+  a = [9, 1, 7, 4, 6, 2, 8, 3]
+  mergesort(a , 0 , 7) 
+  assert a == [1, 2, 3, 4, 6, 7, 8, 9], "mergesort failed"
