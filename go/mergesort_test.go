@@ -1,38 +1,28 @@
 package main
-import "fmt"
+import (
+  "testing"
+  "github.com/stretchr/testify/assert"
+)
 
-var a[20000] int
+func TestMergeSort(t *testing.T) {
+  a := []int{9, 1, 7, 4, 6, 2, 8, 3}
+  expected_result := []int{1, 2, 3, 4, 6, 7, 8, 9}
 
-func main(){
-  //fmt.Println("hy");
-  var  tc int
-  fmt.Scanln(&tc)
-  i := 0
-  for i < tc {
-    var n int
-    fmt.Scan(&n)
-    for i := 0; i < n; i++ {
-      fmt.Scan(&a[i])
-    }
-    mergesort(0 , n - 1);
-    for i := 0; i < n; i++{
-      fmt.Printf("%d ",a[i])
-    }
-    fmt.Printf("\n")
-    i += 1
-  }
+  mergesort(a, 0 , 7);
+  assert.Equal(t, a, expected_result)
 }
 
-func mergesort(l int , h int){
+
+func mergesort(a []int, l int , h int){
   if l <  h {
     mid := (l + h) >> 1
-    mergesort(l , mid);
-    mergesort( mid + 1 , h);
-    merge(l , mid ,h);
+    mergesort(a, l , mid);
+    mergesort(a, mid + 1 , h);
+    merge(a, l , mid ,h);
   }
 }
 
-func merge(l int ,mid int , h int){
+func merge(a []int, l int ,mid int , h int){
   n1 := mid - l + 1
   n2 := h - mid;
   left := make([]int, n1)
