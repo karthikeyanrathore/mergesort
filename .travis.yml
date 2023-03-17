@@ -6,7 +6,6 @@ jobs:
       script:
         - python mergesort.py
 
-
 notifications:
   email:
     - karthikerathore@gmail.com
