@@ -30,6 +30,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
    - uses: actions/checkout@v3
+   - uses: actions/setup-go@v4
      with:
       go-version: 1.19
    - name: test
@@ -44,6 +45,70 @@ jobs:
    - name: test
      run: |
         cd languages/
-        g++ mergesort.cc
+        g++ mergesort.cc -o mergesort_cc
+        ./mergesort_cc
+
+  c-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - name: test
+     run: |
+        cd languages/
+        gcc mergesort.c -o mergesort_c
+        ./mergesort_c
+
+  pascal-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - name: install fpc
+     run: sudo apt-get update && sudo apt-get install -y fpc
+   - name: test
+     run: |
+        cd languages/
+        fpc mergesort.pas
+        echo "1 8 9 1 7 4 6 2 8 3" | ./mergesort | tee out.txt
+        grep -q "^1 2 3 4 6 7 8 9" out.txt
+
+  rust-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - name: test
+     run: |
+        cd languages/
+        rustc mergesort.rs -o mergesort_rs
+        ./mergesort_rs
+
+  swift-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - name: test
+     run: |
+        cd languages/
+        swiftc mergesort.swift -o mergesort_swift
+        ./mergesort_swift
+
+  haskell-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - uses: haskell-actions/setup@v2
+   - name: test
+     run: |
+        cd languages/
+        runghc mergesort.hs
+
+  awk-build:
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v3
+   - name: test
+     run: |
+        cd languages/
+        echo "9 1 7 4 6 2 8 3" | awk -f mergesort.awk | tee out.txt
+        grep -qx "1 2 3 4 6 7 8 9" out.txt
 
 

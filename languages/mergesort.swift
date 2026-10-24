@@ -1,53 +1,42 @@
-func merge(left: [Int],right: [Int],  _ low: Int, _ mid: Int,_  high: Int) -> [Int]{
-  for i in 0...(n1 - 1){
-    left.append(array[i + low])
-  }
-  for i in 0...(n2 - 1){
-    right.append(array[i + mid + 1])
-  }
+func merge(_ array: inout [Int], _ low: Int, _ mid: Int, _ high: Int){
+  let left = Array(array[low...mid])
+  let right = Array(array[(mid + 1)...high])
   var i = 0
   var j = 0
-  var res = [Int]()
-  while (i < n1 && j < n2){
+  var k = low
+  while (i < left.count && j < right.count){
     if( left[i] <= right[j]){
-      res.append(left[i])
+      array[k] = left[i]
       i += 1
     }
     else{
-      res.append(right[j])
+      array[k] = right[j]
       j += 1
     }
+    k += 1
   }
-  while(i < n1){
-    res.append(left[i])
+  while(i < left.count){
+    array[k] = left[i]
     i += 1
+    k += 1
   }
-  while(j < n2){
-    res.append(right[j])
+  while(j < right.count){
+    array[k] = right[j]
     j += 1
-  }
-  var k = low
-  for el in res{
-    array[k] = el
     k += 1
   }
 }
 
 
-func mergesort(array: [Int], _ low: Int, _ high: Int) -> [Int]{
-  if(array.count == 1){
-    return array
-  }
-  if(array.count == 2){
-    return merge([a[0]], [a[1]])
-  }
+func mergesort(_ array: inout [Int], _ low: Int, _ high: Int){
   if (low < high){
-    var mid = (low + high) >> 1;
-    let a1 =mergesort(array, low, mid)
-    let a2 = mergesort(array,mid + 1,high)
-    return merge(array, low, mid,  high)
+    let mid = (low + high) >> 1
+    mergesort(&array, low, mid)
+    mergesort(&array, mid + 1, high)
+    merge(&array, low, mid, high)
   }
 }
 
-var a = [8, 9, 1, 0];
-print(mergesort(a , 0, 3))
+var a = [9, 1, 7, 4, 6, 2, 8, 3]
+mergesort(&a, 0, a.count - 1)
+precondition(a == [1, 2, 3, 4, 6, 7, 8, 9], "mergesort failed")

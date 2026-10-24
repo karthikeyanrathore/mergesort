@@ -1,7 +1,10 @@
+#include <assert.h>
+#include <string.h>
+
 void merge(int *a , int L , int mid , int R){
   int n1 = mid - L + 1;
   int n2 = R - mid;
-  int *left(n1) , *right(n2) , *res;
+  int left[n1] , right[n2];
 
   for(int i  =0; i < n1; ++i){
     left[i] = a[i + L];
@@ -9,25 +12,21 @@ void merge(int *a , int L , int mid , int R){
   for(int i = 0; i < n2; ++i){
     right[i] = a[i + mid + 1];
   }
-  int i = 0 , j = 0;
+  int i = 0 , j = 0 , k = L;
   while(i < n1 && j < n2){
     if(left[i] <= right[j]){
-      res.push_back(left[i++]);
+      a[k++] = left[i++];
     }
-    else res.push_back(right[j++]);
+    else a[k++] = right[j++];
   }
   while(i < n1){
-    res.push_back(left[i++]);
+    a[k++] = left[i++];
   }
   while(j < n2){
-    res.push_back(right[j++]);
-  }
-  int k = L;
-  for(auto& x: res){
-    a[k++] = x;
+    a[k++] = right[j++];
   }
 }
-void  mergesort(vector<int>&a , int L , int R){
+void  mergesort(int *a , int L , int R){
   if(L < R){
     int mid = (L + R) >> 1;
     mergesort(a , L , mid);
@@ -35,25 +34,11 @@ void  mergesort(vector<int>&a , int L , int R){
     merge(a , L , mid , R);
   }
 }
-vector<int> fun(vector<int>& a){
-  mergesort(a ,0 , a.size() - 1);
-  return a;
-}
 int main(){
-  // int tc; scanf("%d", &tc);
-  // int ans = 0;
-  // while(tc --){
-  //   int n; scanf("%d",&n);
-  //   int a[n];
-  //   for(int i = 0; i < n; ++i) scanf("%d" , &a[i]);
-  //   fun(a , 0 , n - 1);
-  //   ans += a[0];
-  // }
-  // printf("%d", ans);
-  vector<int> a = {9, 1, 7, 4, 6, 2, 8, 3}
-  fun(a , 0 , n - 1);
-  printf("%d", a)
-  
-}
+  int a[] = {9, 1, 7, 4, 6, 2, 8, 3};
+  mergesort(a , 0 , 7);
 
-// todo: Need rework, compiler gcc
+  int expected_result[] = {1, 2, 3, 4, 6, 7, 8, 9};
+  assert (memcmp(a , expected_result , sizeof(a)) == 0 && "Mergesort failed");
+  return 0;
+}

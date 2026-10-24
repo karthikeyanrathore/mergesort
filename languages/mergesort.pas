@@ -1,4 +1,4 @@
-program mergesort;
+program mergesortpas;
 const
   size = 10001;
 
@@ -29,29 +29,29 @@ begin
       if(left[p] <= right[q]) then
         begin
           a[k] := left[p];
-          k += 1;
-          p += 1;
+          k := k + 1;
+          p := p + 1;
         end
       else
         begin
           a[k] := right[q];
-          k += 1;
-          q += 1;
+          k := k + 1;
+          q := q + 1;
         end;
     end;
   
   while(p <= n1) do
     begin
       a[k] := left[p];
-      k += 1;
-      p += 1;
+      k := k + 1;
+      p := p + 1;
     end;
 
   while(q <= n2) do
     begin
       a[k] := right[q];
-      k += 1;
-      q += 1;
+      k := k + 1;
+      q := q + 1;
     end;
 
   
@@ -64,7 +64,7 @@ var
 begin
   if( L < R ) then
     begin
-      mid := ( L + R )>>1;
+      mid := ( L + R ) div 2;
       mergesort(a , L , mid);
       mergesort(a , mid + 1, R);
       merge(a , L , mid , R);
@@ -88,6 +88,6 @@ var
       for i:= 1 to n do
         write(a[i] , ' ');
       writeln();
-      test -= 1;
+      test := test - 1;
     end; 
   end.
